@@ -1,4 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte & Sustentável - Agricultura do Futuro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* HEADER E NAVEGAÇÃO */
+        header {
+            background: linear-gradient(135deg, #1b5e20 0%, #2d7a3a 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🌱";
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #2d7a3a 0%, #1b5e20 50%, #00796b 100%);
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 150, 136, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2d7a3a;
+        }
+
+        /* SEÇÃO SOBRE */
+        .about {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: #1b5e20;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #4CAF50 0%, #00796b 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+
+        /* SEÇÃO SERVIÇOS */
+        .services {
+            background: #f5f5f5;
+            padding: 5rem 2rem;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1b5e20;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #2d7a3a;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* SEÇÃO NÚMEROS */
+        .stats {
+            background: linear-gradient(135deg, #1b5e20 0%, #2d7a3a 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* SEÇÃO DIFERENCIAIS */
+        .features {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1b5e20;
+            margin-bottom: 3rem;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: #4CAF50;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .feature-item p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* SEÇÃO CONTATO */
+        .contact {
+            background: #f5f5f5;
+            padding: 5rem 2rem;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1b5e20;
+            margin-bottom: 3rem;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #a8d5a8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn-secondary {
+                display: block;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .services h2,
+            .features h2,
+            .contact h2 {
+                font-size: 2rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">Agro Forte</div>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Agricultura Forte e Sustentável</h1>
+            <p>Cultivando o futuro com responsabilidade ambiental e produtividade garantida</p>
+            <button class="btn" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Comece Agora</button>
+            <a href="#sobre" class="btn btn-secondary">Saiba Mais</a>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="about" id="sobre">
+        <div class="about-content">
+            <h2>Quem Somos</h2>
+            <p>Somos uma empresa comprometida com a revolução da agricultura moderna, combinando tecnologia de ponta com práticas sustentáveis.</p>
+            <p>Nosso objetivo é capacitar agricultores para aumentar produtividade enquanto preservam o meio ambiente para as gerações futuras.</p>
+            <p>Com mais de 10 anos de experiência, temos ajudado milhares de fazendeiros a transformar suas operações.</p>
+        </div>
+        <div class="about-image">🌾</div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="services" id="servicos">
+        <h2>Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚜</div>
+                <h3>Mecanização Inteligente</h3>
+                <p>Equipamentos modernos e eficientes que reduzem custos e aumentam a produção com sustentabilidade.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌱</div>
+                <h3>Manejo Sustentável</h3>
+                <p>Estratégias de cultivo que respeitam o solo e a biodiversidade local.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Análise de Dados</h3>
+                <p>Relatórios detalhados para otimizar decisões agrícolas com base em informações precisas.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3>Irrigação Sustentável</h3>
+                <p>Sistemas inteligentes de irrigação que economizam água e energia.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌍</div>
+                <h3>Consultoria Ambiental</h3>
+                <p>Orientação especializada para adequação a normas ambientais e certificações.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3>Treinamento e Capacitação</h3>
+                <p>Cursos práticos para sua equipe dominar novas técnicas agrícolas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NÚMEROS -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>50,000+</h3>
+                <p>Hectares Transformados</p>
+            </div>
+            <div class="stat-item">
+                <h3>8,500+</h3>
+                <p>Agricultores Atendidos</p>
+            </div>
+            <div class="stat-item">
+                <h3>35%</h3>
+                <p>Aumento Médio de Produção</p>
+            </div>
+            <div class="stat-item">
+                <h3>10 anos</h3>
+                <p>De Experiência Comprovada</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="features" id="diferenciais">
+        <h2>Por Que Nos Escolher</h2>
+        <div class="features-list">
+            <div class="feature-item">
+                <p><strong>Tecnologia de Ponta</strong> - Ferramentas e equipamentos dos melhores fabricantes</p>
+            </div>
+            <div class="feature-item">
+                <p><strong>Equipe Experiente</strong> - Agrônomos e especialistas com décadas de vivência</p>
+            </div>
+            <div class="feature-item">
+                <p><strong>Sustentabilidade Garantida</strong> - Práticas que respeitam o planeta</p>
+            </div>
+            <div class="feature-item">
+                <p><strong>Preços Competitivos</strong> - Melhor custo-benefício do mercado</p>
+            </div>
+            <div class="feature-item">
+                <p><strong>Suporte 24/7</strong> - Sempre disponível para sua fazenda</p>
+            </div>
+            <div class="feature-item">
+                <p><strong>Resultado Garantido</strong> - Comprometidos com seu sucesso</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contact" id="contato">
+        <h2>Entre em Contato</h2>
+        <div class="contact-container">
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🌱 Agro Forte</h3>
+                <p>Agricultura sustentável para um futuro melhor.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#servicos">Mecanização Inteligente</a></li>
+                    <li><a href="#servicos">Consultoria Ambiental</a></li>
+                    <li><a href="#servicos">Análise de Dados</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li>📞 (41) 3333-3333</li>
+                    <li>📧 contato@agroforte.com.br</li>
+                    <li>📍 Curitiba - PR</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Agro Forte & Sustentável. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`Obrigado, ${name}! Sua mensagem foi enviada com sucesso. Entraremos em contato em breve.`);
+            event.target.reset();
+        }
+
+        // Smooth scroll para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
 
 
 
